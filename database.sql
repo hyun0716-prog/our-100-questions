@@ -7,7 +7,7 @@ create table if not exists public.private_couple_keys (
   token_hash text not null unique check (length(token_hash)=64)
 );
 create table if not exists public.private_couple_entries (
-  question_id integer not null check (question_id between 1 and 100),
+  question_id integer not null check (question_id between 1 and 200),
   role text not null check (role in ('yeha','junghyun')),
   answer text not null check (length(btrim(answer)) > 0 and length(answer)<=10000),
   different boolean not null default false,
@@ -64,7 +64,7 @@ begin
   select k.role into who from public.private_couple_keys k
   where k.token_hash = encode(sha256(convert_to(p_token,'UTF8')),'hex');
   if who is null then raise exception '접속 코드가 올바르지 않습니다'; end if;
-  if p_question_id is null or p_question_id not between 1 and 100
+  if p_question_id is null or p_question_id not between 1 and 200
       or p_answer is null or length(btrim(p_answer)) = 0 or length(p_answer)>10000 then
     raise exception '질문 번호 또는 답변이 유효하지 않습니다';
   end if;
