@@ -119,12 +119,37 @@ header{border-bottom-color:#e9ebe6}
 .switch-account:hover{color:#506e59;border-bottom-color:#789780}
 .switch-account:focus-visible{outline:2px solid #8cac97;outline-offset:4px;border-radius:2px}
 @media(max-width:560px){.account-label{font-size:11px}.account-footer{margin-top:12px}.switch-account{font-size:11px}}
+
+/* Visually 12px answers with an iOS-safe 16px textarea input size.
+   The 0.75 transform only changes the visual size; pinch-to-zoom stays enabled. */
+.answer-viewport{width:100%;min-width:0}
+.answer,.otherbox,.pair div{font-size:12px;line-height:1.4}
+@media(max-width:820px){
+  .answer-viewport{position:relative;height:140px}
+  .answer-viewport .answer{
+    display:block;position:absolute;inset:0 auto auto 0;
+    box-sizing:border-box;
+    width:133.333333%;
+    min-height:0;
+    height:186.666667px;
+    max-height:186.666667px;
+    padding:21.333333px;
+    border-radius:16px;
+    border-width:1.333333px;
+    font-size:16px;
+    line-height:1.4;
+    transform:scale(.75);
+    transform-origin:top left;
+    resize:none;
+    margin:0;
+  }
+}
 </style></head><body>
 <div class="wrap"><header><div class="brand"><span class="brand-mark">♡</span> 예하와 정현</div><div style="display:flex;align-items:center;gap:11px"><div class="status"><i id="signal" class="signal"></i><span id="connection">연결 확인 중</span></div><span id="accountLabel" class="account-label" aria-live="polite"></span></div></header>
 <div class="hero"><div><div class="kicker">OUR 200 QUESTIONS</div><h1>우리의 200가지 대화</h1><p>서로 다른 생각도, 나란히 적어가는 우리 이야기.<br>각자의 휴대폰에서 천천히 채워가는 기록.</p></div><div class="names">YEHA <span style="color:#b5b7b1">&</span> JUNGHYUN</div></div>
 <div id="app" class="hidden"><div class="progress"><div class="progress-row"><strong>우리의 대화 기록</strong><span id="progressCount">0 / 200개 함께 완료</span></div><div class="bar"><i id="barFill"></i></div><div class="top-actions"><span id="remainingCount" class="remaining-count">내가 답할 질문 200개 남음</span><button type="button" id="openQuestions" class="list-shortcut">전체 질문 보기 <span aria-hidden="true">→</span></button></div></div><div id="tabs" class="pilltabs"></div>
 <section id="editor"><div class="layout"><main class="panel"><div class="qmeta"><span class="category-label" id="categoryName">질문</span><span class="qnum" id="qNumber">001 / 100</span></div><h2 class="question" id="question"></h2><p class="helper" id="subline">답변은 '다음 질문'을 누르면 서버에 저장돼요.</p>
-<div class="answer-section"><div class="person-row"><span id="ownName" class="person"><i></i>나의 생각</span><span class="save-state" id="saveStatus">아직 작성 전</span></div><textarea id="myAnswer" class="answer" maxlength="200" placeholder="당신의 생각을 천천히 적어주세요..."></textarea><div class="answer-counter" id="answerCount">0 / 200자</div></div>
+<div class="answer-section"><div class="person-row"><span id="ownName" class="person"><i></i>나의 생각</span><span class="save-state" id="saveStatus">아직 작성 전</span></div><div class="answer-viewport"><textarea id="myAnswer" class="answer" maxlength="200" placeholder="당신의 생각을 천천히 적어주세요..."></textarea></div><div class="answer-counter" id="answerCount">0 / 200자</div></div>
 <div class="answer-section"><div class="person-row"><span id="otherName" class="person j"><i></i>상대방의 생각</span><span class="save-state" id="otherStatus">아직 답변 전</span></div><div class="otherbox" id="otherAnswer"><span class="locked">서로 답변을 제출하면 이곳에 함께 표시돼요.</span></div></div>
 <button type="button" class="difference" id="differentBtn" aria-pressed="false"><span class="diff-check" id="diffCheck" aria-hidden="true"></span><span class="diff-label"><b>생각이 조금 달라요</b><small>다음에 다시 이야기할 질문으로 표시하기</small></span></button><div class="actions"><button id="prevBtn" class="btn">← 이전 질문</button><button id="nextBtn" class="btn primary">저장하고 다음 →</button></div></main>
 <aside class="side"><div class="hintbox"><div class="cap">이것까지 물어보세요</div><h3 id="tipPrompt"></h3><p id="tipText"></p></div><div class="sidepanel"><h3>함께 완성하는 대화</h3><p>각자의 전용 링크에서 답변을 남겨요. 두 사람 모두 답한 질문은 함께 확인할 수 있어요.</p></div></aside></div></section>
