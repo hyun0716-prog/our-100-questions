@@ -2,139 +2,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{font-family:'Noto Sans KR',system-ui,sans-serif;font-size:15px;color:#292e2b;background:#f9f9f6;--accent:#435d4e;--muted:#7e8780;--line:#e7e9e5}
-*{box-sizing:border-box}
-body{margin:0;min-height:100dvh;background:#f9f9f6;color:#292e2b}
-button,textarea,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}
-.hidden,.hide{display:none!important}
-.wrap{max-width:1030px;margin:auto;padding:0 32px 70px}
-header{height:67px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
-.brand{font-size:13px;font-weight:650;letter-spacing:-.045em;display:flex;align-items:center;gap:9px}
-.brand-mark{width:27px;height:27px;border-radius:50%;background:var(--accent);color:white;font-family:serif;font-size:19px;font-weight:400;display:grid;place-items:center}
-header>div:last-child{display:flex;align-items:center;gap:12px}
-.smallbtn{border:1px solid #e1e4df;background:#fff;border-radius:8px;padding:9px 12px;color:#435348;font-size:12px;font-weight:600}
-.status{display:flex;align-items:center;gap:6px;color:#929a92;font-size:11px;white-space:nowrap}
-.signal{width:6px;height:6px;border-radius:50%;background:#a8aaa6;flex-shrink:0}
-.signal.on{background:#6a9b73}
-.hero{padding:34px 0 25px;display:flex;align-items:end;justify-content:space-between;gap:14px}
-.kicker{font:600 10px 'DM Sans',sans-serif;letter-spacing:.12em;color:#798a7f}
-.hero h1{font-size:clamp(22px,2.8vw,28px);line-height:1.5;font-weight:550;letter-spacing:-.065em;margin:9px 0}
-.hero p{font-size:12px;line-height:1.9;color:#818981;margin:0}
-.names{font:500 10px 'DM Sans',sans-serif;letter-spacing:.14em;color:#929e93;white-space:nowrap}
-.progress{margin:1px 0 19px;padding:0;background:transparent}
-.progress-row{display:flex;justify-content:space-between;align-items:center}
-.progress-row strong{font-size:12px;font-weight:600;color:#515a53}
-.progress-row span{font-size:11px;color:#7b897e}
-.bar{height:4px;margin-top:9px;background:#e7ece6;border-radius:10px;overflow:hidden}
-.bar i{display:block;height:100%;width:0%;border-radius:10px;background:#718b77;transition:width .2s}
-.pilltabs{display:flex;align-items:center;gap:6px;overflow-x:auto;padding:1px 0 17px;scrollbar-width:none}
-.pilltabs::-webkit-scrollbar{display:none}
-.pill{border:1px solid #e6e8e3;background:transparent;color:#778078;border-radius:8px;padding:9px 13px;flex-shrink:0;font-size:12px;font-weight:500;transition:background .18s}
-.pill.active{color:#fff;background:var(--accent);border-color:var(--accent)}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:31px;align-items:start}
-.panel{padding:28px 32px 32px;border:1px solid var(--line);background:white;border-radius:13px}
-.qmeta{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.category-label{color:#52705a;font-size:12px;font-weight:650}
-.qnum{font:500 11px 'DM Sans',sans-serif;letter-spacing:.09em;color:#929d94}
-.question{font-size:clamp(21px,2.7vw,27px);line-height:1.58;letter-spacing:-.055em;font-weight:650;margin:17px 0 9px;word-break:keep-all}
-.helper{font-size:11px;color:#9ca39b;line-height:1.8;margin:0 0 25px}
-.answer-section{margin-top:20px}
-.person-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
-.person{display:flex;align-items:center;gap:8px;font-weight:650;font-size:13px}
-.person i{display:block;width:6px;height:6px;border-radius:50%;background:#b7867e}
-.person.j i{background:#789286}
-.save-state{font-size:11px;color:#9ba49c}
-.answer{width:100%;min-height:150px;resize:vertical;border:1px solid #e5e8e2;background:#fcfdfa;padding:15px 16px;border-radius:8px;font-size:15px;line-height:1.8;color:#313c34;outline:none}
-.answer:focus{background:#fff;border-color:#8ba997;box-shadow:0 0 0 3px #deebdf}
-.answer::placeholder{color:#adb5ac}
-.otherbox{min-height:105px;border:1px solid #e8eae6;border-radius:8px;background:#f9fbf9;padding:15px 16px;color:#38483d;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.8}
-.locked{font-size:12px;color:#98a198;line-height:1.8}
-.difference{display:flex;align-items:center;gap:12px;width:100%;border:1px solid #e5e8e3;border-radius:9px;background:white;text-align:left;padding:13px 14px;margin-top:23px;color:#444c45}
-.difference b{font-size:12px;font-weight:650}.difference small{display:block;font-size:11px;color:#9da49d;margin-top:4px}
-.diff-icon{display:none}
-.diff-check{width:21px;height:21px;display:grid;place-items:center;border:1px solid #b7c1b8;border-radius:6px;font-size:13px;color:transparent;margin-left:auto;order:-1;flex-shrink:0}
-.difference.active{border-color:#a6bba9;background:#f2f7f1}
-.difference.active .diff-check{background:var(--accent);color:#fff;border-color:var(--accent)}
-.actions{display:flex;gap:9px;margin-top:20px;justify-content:space-between}
-.btn{border:1px solid #e1e5df;background:#fff;color:#536255;padding:12px 16px;border-radius:8px;font-size:12px;font-weight:600}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;min-width:160px}
-.btn:focus-visible,.pill:focus-visible,.difference:focus-visible,.smallbtn:focus-visible,.filter:focus-visible{outline:3px solid #b1cabb;outline-offset:2px}
-.side{padding-top:6px}
-.hintbox{padding:0 0 19px;border-bottom:1px solid var(--line);margin-bottom:22px}
-.hintbox .cap{font:600 10px 'DM Sans',sans-serif;letter-spacing:.12em;color:#91a092}
-.hintbox h3{font-size:14px;font-weight:600;line-height:1.8;letter-spacing:-.04em;margin:11px 0}
-.hintbox p{color:#838c84;font-size:12px;line-height:1.9;margin:0}
-.sidepanel h3{font-size:13px;font-weight:650;margin:0 0 10px}
-.sidepanel p{font-size:12px;line-height:1.9;color:#8a928a;margin:0}
-.sidepanel button{border:0;background:none;padding:0;margin-top:15px;color:#486b53;font-size:12px;font-weight:650}
-.gridview{border:1px solid var(--line);background:white;border-radius:13px;padding:26px}
-.viewhead{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-bottom:20px}
-.viewhead h2{font-size:19px;margin:0}
-.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}
-.filter{border:1px solid #e6e8e3;border-radius:8px;background:white;color:#78857b;padding:9px 12px;font-size:12px}
-.filter.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
-.qgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.qitem{border:1px solid #e6e9e5;background:white;border-radius:9px;text-align:left;padding:16px;min-height:112px}
-.qitem.ready{background:#f2f8f1}
-.qitem strong{font-size:11px;color:#6c8b72}
-.qitem p{font-size:12px;color:#374138;line-height:1.7;margin:9px 0}
-.qitem small{font-size:11px;color:#8b988d}
-.archive{display:grid;gap:14px}
-.archive-item{padding:21px;border:1px solid var(--line);border-radius:9px}
-.archive-item h3{font-size:15px;line-height:1.65;margin:10px 0 15px}
-.archive-item .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pair div{background:#f8faf7;padding:14px;border-radius:8px;font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
-.pair strong{display:block;font-size:12px;color:#4d6755;margin-bottom:7px}
-.overlay{position:fixed;inset:0;display:grid;place-items:center;background:#1c282580;z-index:30;padding:18px}
-.dialog{background:white;width:min(100%,420px);padding:30px;border-radius:12px}
-.dialog h2{font-size:22px;margin:9px 0 10px}.dialog p{font-size:13px;line-height:1.8;color:#7c877d}
-.dialog label{display:block;font-size:12px;font-weight:650;margin:20px 0 8px}
-.dialog input{width:100%;border:1px solid var(--line);padding:14px;border-radius:8px}
-.dialog .btn{width:100%;margin-top:13px}
-.notice{font-size:11px!important;color:#8c948c;line-height:1.8}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,15px);background:#34493b;color:white;z-index:40;border-radius:10px;padding:12px 17px;opacity:0;transition:.2s;pointer-events:none;max-width:90vw;font-size:12px;text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.footnote{font-size:11px;color:#9ea69d;text-align:center;margin-top:27px;line-height:1.8}
-.loader{text-align:center;padding:45px;color:#8b988d}
-@media(max-width:820px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:5px}.hintbox{border-bottom:0;margin:0}.qgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){
-.wrap{padding:0 17px 95px}
-header{height:61px}
-.brand{font-size:12px}
-.brand-mark{width:25px;height:25px;font-size:16px}
-.status span{display:none}
-.smallbtn{font-size:11px;padding:8px 10px}
-.hero{padding:27px 0 22px}
-.hero h1{font-size:22px}
-.hero p{font-size:11px}
-.names{display:none}
-.progress{margin-bottom:15px}
-.pilltabs{margin-right:-17px;padding-right:17px;padding-bottom:14px}
-.panel{padding:23px 18px 16px;border-radius:11px}
-.question{font-size:22px;margin-top:16px}
-.helper{margin-bottom:20px}
-.answer{min-height:152px;font-size:16px}
-.side{grid-template-columns:1fr;gap:17px}
-.hintbox{padding:5px 1px 17px;border-bottom:1px solid var(--line)}
-.actions{position:sticky;bottom:0;padding:14px 0 max(10px,env(safe-area-inset-bottom));z-index:8;background:linear-gradient(transparent,#fff 22%);margin-top:8px}
-.btn{padding:14px 12px}.btn.primary{min-width:0;flex:1}
-.gridview{padding:18px}
-.qgrid{grid-template-columns:1fr}
-.archive-item .pair{grid-template-columns:1fr}
-.filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
-.filter{flex-shrink:0}
-}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+
+:root{font-family:'Noto Sans KR',system-ui,sans-serif;font-size:15px;color:#2f332f;background:#f8f7f3;--paper:#f8f7f3;--surface:#ffffff;--line:#e5e6de;--text:#2f332f;--muted:#83887f;--accent:#5f7a69;--accent-weak:#eef4ef;--yeha:#c8948d;--jh:#7e998b;--soft-rose:#faf0ec;--soft-green:#eef5ef;--soft-beige:#f7f2e9;--soft-lav:#f3f1f8}*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:linear-gradient(180deg,#fbfaf7 0%,#f7f5ef 100%)}button,textarea,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.hidden,.hide{display:none!important}
+.wrap{max-width:1040px;margin:auto;padding:0 24px 92px}
+header{height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:650;letter-spacing:-.04em}.brand-mark{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:18px;font-family:serif}.status{display:flex;align-items:center;gap:6px;color:#8f958d;font-size:11px;white-space:nowrap}.signal{width:6px;height:6px;border-radius:50%;background:#adb2ac}.signal.on{background:#6e9a79}.smallbtn{border:1px solid #dde2db;background:#fff;border-radius:10px;padding:9px 12px;color:#556056;font-size:12px;font-weight:600}
+.hero{padding:32px 0 22px;display:flex;align-items:end;justify-content:space-between;gap:12px}.kicker{font:600 10px 'DM Sans',sans-serif;letter-spacing:.13em;color:#829182}.hero h1{font-size:clamp(22px,2.8vw,27px);line-height:1.48;font-weight:600;letter-spacing:-.06em;margin:8px 0}.hero p{font-size:12px;line-height:1.85;color:#81857e;margin:0}.names{font:500 10px 'DM Sans',sans-serif;letter-spacing:.14em;color:#90998f;white-space:nowrap}
+.progress{margin:0 0 16px;padding:0;background:transparent}.progress-row{display:flex;justify-content:space-between;align-items:center}.progress-row strong{font-size:12px;font-weight:700;color:#4f5a51}.progress-row span{font-size:11px;color:#798378}.bar{height:5px;margin-top:9px;background:#e7ece6;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#a8bda8,#5f7a69);border-radius:999px;transition:width .2s}
+.pilltabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 0 15px}.pilltabs::-webkit-scrollbar{display:none}.pill{flex:0 0 auto;border:1px solid #e1e5dd;background:#fff;border-radius:12px;padding:10px 14px;color:#677164;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:.18s}.pill:hover{background:#fbfcfa}.pill.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 6px 18px rgba(95,122,105,.18)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:26px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 28px 24px;box-shadow:0 8px 30px rgba(44,51,46,.04)}
+.qmeta{display:flex;align-items:center;justify-content:space-between;gap:10px}.category-label{display:inline-flex;align-items:center;gap:6px;background:#f3f6f0;border:1px solid #e4ebdf;color:#57705d;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:650}.qnum{font:500 11px 'DM Sans',sans-serif;letter-spacing:.08em;color:#97a095}.question{font-size:clamp(22px,2.8vw,28px);line-height:1.58;letter-spacing:-.055em;font-weight:700;margin:17px 0 9px;word-break:keep-all}.helper{color:#a0a49c;font-size:11px;line-height:1.8;margin:0 0 22px}
+.answer-section{margin-top:19px}.person-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}.person{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#454c47}.person i{display:block;width:7px;height:7px;border-radius:50%;background:var(--yeha)}.person.j i{background:var(--jh)}.save-state{font-size:11px;color:#9ea49d}.answer{width:100%;min-height:148px;border:1px solid #e5e9e2;background:#fcfdfa;resize:vertical;padding:16px;border-radius:12px;font-size:15px;line-height:1.82;color:#313832;outline:0}.answer:focus{border-color:#8eaa98;box-shadow:0 0 0 3px #e4efe4}.answer::placeholder{color:#b0b5ae}.otherbox{min-height:98px;border:1px solid #e7ebe5;background:#f8fbf8;border-radius:12px;padding:15px 16px;line-height:1.82;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;color:#374039}.locked{color:#91978f;font-size:12px;line-height:1.8}
+.difference{margin-top:22px;width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:1px solid #e4e7e1;border-radius:12px;padding:14px 15px}.diff-icon{width:18px;height:18px;border-radius:5px;border:1px solid #c8d2c9;background:#f7faf7;display:grid;place-items:center;color:transparent;flex-shrink:0}.difference b{font-size:12px;color:#434a45}.difference small{display:block;color:#98a097;font-size:11px;margin-top:4px;line-height:1.55}.diff-check{margin-left:auto;flex-shrink:0;width:22px;height:22px;border-radius:6px;border:1px solid #bdc8bf;display:grid;place-items:center;font-size:13px;color:transparent;background:#fff}.difference.active{background:#f2f7f1;border-color:#b9cdbc}.difference.active .diff-check,.difference.active .diff-icon{background:var(--accent);border-color:var(--accent);color:#fff}
+.actions{display:flex;gap:10px;justify-content:space-between;margin-top:22px}.btn{border-radius:10px;border:1px solid #dfe4dc;padding:13px 16px;background:#fff;font-size:12px;font-weight:700;color:#5b675d}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);min-width:168px}.btn:focus-visible,.pill:focus-visible,.smallbtn:focus-visible,.difference:focus-visible{outline:3px solid #cad9ce;outline-offset:2px}
+.side{padding-top:2px}.hintbox,.sidepanel{border-radius:16px;padding:18px 17px;border:1px solid transparent}.hintbox{background:var(--soft-beige);border-color:#efe3ce}.hintbox .cap{color:#9a8660;font-size:10px;letter-spacing:.12em;font-weight:700}.hintbox h3{font-size:14px;line-height:1.76;margin:10px 0;color:#544f45}.hintbox p{color:#8b8578;font-size:12px;line-height:1.82;margin:0}.sidepanel{background:var(--soft-lav);border-color:#e5e1ef;margin-top:12px}.sidepanel h3{margin:0 0 9px;font-size:13px;color:#4d4a58}.sidepanel p{font-size:12px;line-height:1.82;color:#7f7b89;margin:0}.sidepanel button{margin-top:14px;border:none;background:none;color:#697964;font-weight:700;font-size:12px;padding:0}
+.gridview{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.viewhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.viewhead h2{font-size:18px;margin:0}.filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}.filter{border-radius:10px;border:1px solid #e3e7e0;background:#fff;color:#7b867c;padding:8px 12px;font-size:12px}.filter.selected{background:var(--accent);color:#fff;border-color:var(--accent)}.qgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.qitem{text-align:left;background:#fff;border:1px solid #e7ebe5;border-radius:12px;padding:15px;min-height:112px}.qitem.ready{background:#f3f8f3;border-color:#dbe7dc}.qitem strong{font-size:11px;color:#6f8372}.qitem p{font-size:12px;line-height:1.65;margin:8px 0;color:#454c47}.qitem small{font-size:11px;color:#93a094}.archive{display:grid;gap:13px}.archive-item{border:1px solid #e7ebe5;border-radius:14px;padding:18px;background:#fff}.archive-item h3{font-size:14px;line-height:1.7;margin:8px 0 15px}.archive-item .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair div{background:#f8faf7;border-radius:10px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.72}.pair strong{display:block;font-size:12px;margin-bottom:6px;color:#6c8371}
+.overlay{position:fixed;inset:0;background:#20302a77;z-index:30;display:grid;place-items:center;padding:16px}.dialog{background:#fff;border-radius:18px;padding:28px;width:min(100%,430px);box-shadow:0 24px 80px rgba(19,28,25,.18)}.dialog h2{font-size:24px;letter-spacing:-.04em;margin:8px 0 12px}.dialog p{font-size:13px;line-height:1.9;color:#7d857e}.dialog label{display:block;font-size:12px;font-weight:700;margin:17px 0 7px}.dialog input{width:100%;border:1px solid #e2e6df;border-radius:10px;padding:13px;background:#fff}.dialog .btn{width:100%;margin-top:15px}.notice{font-size:12px;color:#939993;line-height:1.8;margin-top:10px}.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,18px);opacity:0;background:#485d4f;color:white;border-radius:999px;padding:12px 19px;font-size:12px;pointer-events:none;transition:.2s;z-index:50;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.footnote{color:#a7ada6;font-size:11px;text-align:center;line-height:1.8;margin-top:25px}.loader{padding:45px;text-align:center;color:#889188}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sidepanel{margin-top:0}.qgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.wrap{padding:0 16px 98px}header{height:62px}.brand{font-size:12px}.brand-mark{width:26px;height:26px;font-size:16px}.hero{padding:28px 1px 21px}.hero h1{font-size:23px}.hero p{font-size:11px}.names{display:none}.progress{margin-bottom:13px}.panel{border-radius:14px;padding:22px 18px 16px}.question{font-size:23px;margin-top:16px}.answer{min-height:140px}.side{grid-template-columns:1fr}.actions{position:sticky;bottom:0;z-index:5;background:linear-gradient(transparent,#fff 22%);padding:14px 0 max(10px,env(safe-area-inset-bottom));margin-top:10px}.btn{padding:14px 14px}.gridview{padding:18px}.archive-item .pair{grid-template-columns:1fr}.qgrid{grid-template-columns:1fr}.status span{display:none}.filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}.filter{flex-shrink:0}}
+
 </style></head><body>
-<div class="wrap"><header><div class="brand"><span class="brand-mark">·</span> 예하와 정현의 100가지 대화</div><div style="display:flex;align-items:center;gap:11px"><div class="status"><i id="signal" class="signal"></i><span id="connection">연결 확인 중</span></div><button class="smallbtn" id="accountBtn">내 접속 정보</button></div></header>
-<div class="hero"><div><div class="kicker">OUR 100 QUESTIONS</div><h1>우리의 100가지 대화</h1><p>서로 다른 생각도, 나란히 적어가는 우리 이야기.<br>각자의 휴대폰에서 천천히 채워가는 기록.</p></div><div class="names">YEHA <span style="color:#9fae9e">&</span> JUNGHYUN</div></div>
+<div class="wrap"><header><div class="brand"><span class="brand-mark">♡</span> 예하와 정현의 100가지 대화</div><div style="display:flex;align-items:center;gap:11px"><div class="status"><i id="signal" class="signal"></i><span id="connection">연결 확인 중</span></div><button class="smallbtn" id="accountBtn">내 접속 정보</button></div></header>
+<div class="hero"><div><div class="kicker">OUR 100 QUESTIONS</div><h1>우리의 100가지 대화</h1><p>서로 다른 생각도, 나란히 적어가는 우리 이야기.<br>각자의 휴대폰에서 천천히 채워가는 기록.</p></div><div class="names">YEHA <span style="color:#b5b7b1">&</span> JUNGHYUN</div></div>
 <div id="app" class="hidden"><div class="progress"><div class="progress-row"><strong>우리의 대화 기록</strong><span id="progressCount">0 / 100개 완료</span></div><div class="bar"><i id="barFill"></i></div></div><div id="tabs" class="pilltabs"></div>
 <section id="editor"><div class="layout"><main class="panel"><div class="qmeta"><span class="category-label" id="categoryName">질문</span><span class="qnum" id="qNumber">001 / 100</span></div><h2 class="question" id="question"></h2><p class="helper" id="subline">답변은 '다음 질문'을 누르면 서버에 저장돼요.</p>
 <div class="answer-section"><div class="person-row"><span id="ownName" class="person"><i></i>나의 생각</span><span class="save-state" id="saveStatus">아직 작성 전</span></div><textarea id="myAnswer" class="answer" maxlength="10000" placeholder="당신의 생각을 천천히 적어주세요..."></textarea></div>
 <div class="answer-section"><div class="person-row"><span id="otherName" class="person j"><i></i>상대방의 생각</span><span class="save-state" id="otherStatus">아직 답변 전</span></div><div class="otherbox" id="otherAnswer"><span class="locked">서로 답변을 제출하면 이곳에 함께 표시돼요.</span></div></div>
-<button class="difference" id="differentBtn" aria-pressed="false"><span class="diff-icon" id="diffIcon"></span><span><b>생각이 조금 달라요</b><small>다음에 다시 이야기할 질문으로 표시하기</small></span><span class="diff-check" id="diffCheck"></span></button><div class="actions"><button id="prevBtn" class="btn">← 이전 질문</button><button id="nextBtn" class="btn primary">저장하고 다음 →</button></div></main>
-<aside class="side"><div class="hintbox"><div class="cap">A LITTLE MORE TO TALK ABOUT</div><h3 id="tipPrompt"></h3><p id="tipText"></p></div><div class="sidepanel"><h3>함께 완성하는 대화</h3><p>각자 전용 링크로 자신의 답만 작성할 수 있어요. 두 사람 모두 저장한 질문은 ‘함께 보기’에 모이고, 상대방 화면에도 자동으로 반영됩니다.</p><button id="openList">전체 질문 · 함께 보기 ↗</button></div></aside></div></section>
-<section id="listing" class="gridview hide"><div class="viewhead"><h2 id="listTitle">100가지 질문</h2><button class="smallbtn" id="backEditor">질문으로 돌아가기 ↗</button></div><div class="filters"><button class="filter selected" data-filter="all">전체 질문</button><button class="filter" data-filter="ready">함께 완료</button><button class="filter" data-filter="mine">내 답변 완료</button><button class="filter" data-filter="different">생각이 달라요</button></div><div id="questionGrid" class="qgrid"></div><div id="archive" class="archive hide"></div></section>
+<button class="difference" id="differentBtn" aria-pressed="false"><span class="diff-icon" id="diffIcon">♡</span><span><b>생각이 조금 달라요</b><small>다음에 다시 이야기할 질문으로 표시하기</small></span><span class="diff-check" id="diffCheck">○</span></button><div class="actions"><button id="prevBtn" class="btn">← 이전 질문</button><button id="nextBtn" class="btn primary">저장하고 다음 →</button></div></main>
+<aside class="side"><div class="hintbox"><div class="cap">A LITTLE MORE TO TALK ABOUT</div><h3 id="tipPrompt"></h3><p id="tipText"></p></div><div class="sidepanel"><h3>함께 완성하는 대화</h3><p>각자 전용 링크로 자신의 답만 작성할 수 있어요. 두 사람 모두 저장한 질문은 ‘함께 보기’에 모이고, 상대방 화면에도 자동으로 반영됩니다.</p><button id="openList">전체 질문 · 함께 보기</button></div></aside></div></section>
+<section id="listing" class="gridview hide"><div class="viewhead"><h2 id="listTitle">100가지 질문</h2><button class="smallbtn" id="backEditor">질문으로 돌아가기</button></div><div class="filters"><button class="filter selected" data-filter="all">전체 질문</button><button class="filter" data-filter="ready">함께 완료</button><button class="filter" data-filter="mine">내 답변 완료</button><button class="filter" data-filter="different">생각이 달라요</button></div><div id="questionGrid" class="qgrid"></div><div id="archive" class="archive hide"></div></section>
 <div class="footnote">답변은 Supabase 서버에 저장됩니다. 연결이 끊기면 저장되지 않으니 상태 표시를 확인해 주세요.</div></div>
 <div id="loader" class="loader">우리의 기록을 불러오고 있어요…</div>
 </div>
@@ -165,8 +61,8 @@ async function enter(key){if(!supa){showAuth('Supabase 설정이 아직 없습�
 async function initialize(){if(!supa){$('loader').textContent='먼저 Supabase 프로젝트 정보(config.js)를 입력해 주세요.';setConnected(false,'설정 필요');return;}const params=new URLSearchParams(location.hash.slice(1));const key=params.get('key')||localStorage.getItem('couple_invite_v2');if(key){await enter(key)}else showAuth();}
 function loadDraft(){draft=own(current+1);draftDifferent=!!flags[current+1];dirty=false;}
 function renderStats(){const n=DATA.questions.filter(q=>done(q.id)).length;$('progressCount').textContent=`${n} / 100개 완료`;$('barFill').style.width=n+'%';}
-function renderTabs(){const c=DATA.questions[current].category;$('tabs').innerHTML=DATA.categories.map((v,i)=>`<button class="pill ${i===c?'active':''}" data-category="${i}">${safe(v.name)}</button>`).join('');$('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>goCategory(+b.dataset.category));}
-function render(){if(!role)return;renderStats();renderTabs();if(view==='list'){renderList();return;}const q=DATA.questions[current],c=DATA.categories[q.category];$('question').textContent=q.question;$('categoryName').textContent=c.name;$('qNumber').textContent=`${String(q.id).padStart(3,'0')} / 100`;$('ownName').innerHTML='<i></i>'+myName()+'의 생각';$('ownName').className='person '+(role==='junghyun'?'j':'');$('otherName').innerHTML='<i></i>'+otherName()+'의 생각';$('otherName').className='person '+(role==='yeha'?'j':'');if($('myAnswer').value!==draft)$('myAnswer').value=draft;$('saveStatus').textContent=dirty?'저장하지 않은 변경사항':answered(q.id)?'서버에 저장됨':'아직 답변 전';$('otherStatus').textContent=other(q.id).trim()?'답변 제출됨':'답변 대기 중';$('otherAnswer').innerHTML=done(q.id)?safe(other(q.id)).replace(/\n/g,'<br>'):'<span class="locked">두 사람 모두 답변을 제출하면 상대의 답변을 볼 수 있어요. 서로의 생각을 먼저 적어보세요 ♡</span>';$('differentBtn').classList.toggle('active',draftDifferent);$('differentBtn').setAttribute('aria-pressed',String(draftDifferent));$('diffIcon').textContent='';$('diffCheck').textContent=draftDifferent?'✓':'';$('tipPrompt').textContent=c.prompt;$('tipText').textContent=c.tip;$('prevBtn').disabled=saving||current===0;$('nextBtn').disabled=saving;$('nextBtn').textContent=saving?'저장 중…':current===99?'저장하고 함께 보기 ↗':'저장하고 다음 →';}
+function renderTabs(){const c=DATA.questions[current].category;$('tabs').innerHTML=DATA.categories.map((v,i)=>`<button class="pill ${i===c?'active':''}" data-category="${i}">${v.emoji} ${safe(v.name)}</button>`).join('');$('tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>goCategory(+b.dataset.category));}
+function render(){if(!role)return;renderStats();renderTabs();if(view==='list'){renderList();return;}const q=DATA.questions[current],c=DATA.categories[q.category];$('question').textContent=q.question;$('categoryName').textContent=c.emoji+' '+c.name;$('qNumber').textContent=`${String(q.id).padStart(3,'0')} / 100`;$('ownName').innerHTML='<i></i>'+myName()+'의 생각';$('ownName').className='person '+(role==='junghyun'?'j':'');$('otherName').innerHTML='<i></i>'+otherName()+'의 생각';$('otherName').className='person '+(role==='yeha'?'j':'');if($('myAnswer').value!==draft)$('myAnswer').value=draft;$('saveStatus').textContent=dirty?'저장하지 않은 변경사항':answered(q.id)?'서버에 저장됨':'아직 답변 전';$('otherStatus').textContent=other(q.id).trim()?'답변 제출됨':'답변 대기 중';$('otherAnswer').innerHTML=done(q.id)?safe(other(q.id)).replace(/\n/g,'<br>'):'<span class="locked">두 사람 모두 답변을 제출하면 상대의 답변을 볼 수 있어요. 서로의 생각을 먼저 적어보세요 ♡</span>';$('differentBtn').classList.toggle('active',draftDifferent);$('differentBtn').setAttribute('aria-pressed',String(draftDifferent));$('diffIcon').textContent=draftDifferent?'✓':'';$('diffCheck').textContent=draftDifferent?'✓':'';$('tipPrompt').textContent=c.prompt;$('tipText').textContent=c.tip;$('prevBtn').disabled=saving||current===0;$('nextBtn').disabled=saving;$('nextBtn').textContent=saving?'저장 중…':current===99?'저장하고 함께 보기 ↗':'저장하고 다음 →';}
 async function saveDraft(){if(saving||!supa||!role)return false;if(!draft.trim()){notify('답변을 먼저 작성해 주세요.');return false;}saving=true;render();try{const id=current+1;const {data,error}=await supa.rpc('couple_save',{p_token:token,p_question_id:id,p_answer:draft.slice(0,10000),p_different:draftDifferent});if(error)throw error;loadFromServer(data);loadDraft();setConnected(true,'서버에 저장됨');notify('답변이 저장되었어요 ♡');return true;}catch(e){console.error(e);notify('저장에 실패했어요. 인터넷 연결을 확인해 주세요.');setConnected(false,'저장 실패');return false;}finally{saving=false;render();}}
 async function goQuestion(i){if(i<0||i>=100)return;if(dirty){if(!await saveDraft())return;}current=i;loadDraft();view='editor';$('editor').classList.remove('hide');$('listing').classList.add('hide');render();window.scrollTo({top:0,behavior:'smooth'});}
 function goCategory(c){const i=DATA.questions.findIndex(q=>q.category===c);if(i>=0)goQuestion(i);}
